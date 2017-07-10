@@ -1,0 +1,29 @@
+We aim to create a website for the Office of Culture and Arts for their online ticket sales for their events and a portal for student artists and artist trainors to evaluate each other. Hopefully in the future, more features will be added if the OCA should request it. For the ticket sales module, the administrator must be able to create an event and display it on the website. The admin must be able to set a display picture, event details, a map of the location, time of the event, and ticket prices. The administrator must also be able to set the post-production evaluations for the production team and for the attendees. There would be a page to track ticket sales showing the names, contact details, time, and amount of tickets bought by the customer. 
+
+
+
+
+
+
+
+users 
+    > usercat
+    > artistdetails
+    > artistgroups
+        >subcategories
+    
+events
+    > attendance
+    > participants
+    > child events
+    
+    
+    
+    API's 
+    Google Calendar - https://developers.google.com/google-apps/calendar/
+    Coins PH - https://github.com/coinsph/api/wiki/08-Merchant-API
+    Chikka - https://api.chikka.com/
+    Paypal API - https://developer.paypal.com/docs/api/payments/
+    Google Analytics - http://analytics.google.com/
+
+    
