@@ -23,14 +23,19 @@
     <meta name="description" content="Official Website of DLS-CSB's Office of Culture and Arts">
     <meta name='keywords' content="arts, theater, dance, choir, de la salle, saint, benilde, la salle, DLS-CSB">
     
-     <link type="text/css" rel="styesheet" href="../materialize/css/custom.css">
-    <!-- Compiled and minified CSS for Materialize-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="//cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" rel="stylesheet" />
-    <script type="text/javascript" src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
-
+    <link type="text/css" rel="stylesheet" href="materialize/css/custom.css">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css">
+        
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="includes/jquery.js"></script>
+    <script type='text/javascript' src="/materialize/js/materialize.min.js"></script>
+    <script type="text/javascript" src="includes/script.js"></script>
+            
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
     <div class="container">
