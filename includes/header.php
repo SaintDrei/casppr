@@ -23,13 +23,13 @@
     <meta charset="utf-8">
     <meta name="description" content="Official Website of DLS-CSB's Office of Culture and Arts">
     <meta name='keywords' content="arts, theater, dance, choir, de la salle, saint, benilde, la salle, DLS-CSB">
-    <link href="<?php echo app_path ?>css/bootstrap.css" rel="stylesheet" />
-    <link href="<?php echo app_path ?>css/custom.css" rel="stylesheet" />
+    
+    <link type="text/css" rel="styesheet" href="../materialize/css/custom.css">
     <!-- Compiled and minified CSS for Materialize-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="<?php echo app_path ?>css/jasny-bootstrap.min.css" rel="stylesheet" />
+<!--    <link href="<?php echo app_path ?>css/jasny-bootstrap.min.css" rel="stylesheet" />-->
     <link href="//cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" rel="stylesheet" />
     <script type="text/javascript" src='<?php echo app_path ?>js/jquery-3.2.0.min.js'></script>
      <!-- Compiled and minified JavaScript Materialize -->
