@@ -2,7 +2,7 @@
 	$page_title = "Registration";
 	include_once('../includes/header.php');
 ?>
-
+ 
 
 
 
@@ -90,7 +90,8 @@
                                 <i class="mdi-content-send right"></i>
                               </button>
                                 
-                                <a class="btn" href="#peex-modal">Open This</a>
+                               
+                                <a class="waves-effect waves-light btn modal-trigger" href="#peex-modal">Open This</a> 
                                 <div id="peex-modal" class="modal modal-login">
         <div class="row"></div><div class="row"></div><div class="row"></div><div class="row"></div>
 
@@ -119,6 +120,57 @@
                         </div>
                       </form>
                     </div>
+                
+                
+                
+                
+                 <div class="row">
+         <form class="col s12">
+            <div class="row">
+               <label>Materialize Select</label>
+               <select>
+                  <option value="" disabled selected>Select Fruit</option>
+                  <option value="1">Mango</option>
+                  <option value="2">Orange</option>
+                  <option value="3">Apple</option>
+               </select>               
+            </div>
+            <div class="row">
+               <label>Materialize Multi Select</label>
+               <select multiple>
+                  <option value="" disabled selected>Select Fruit</option>
+                  <option value="1">Mango</option>
+                  <option value="2">Orange</option>
+                  <option value="3">Apple</option>
+               </select>              
+            </div>
+            <div class="row">
+               <label>Select with Optgroup</label>
+               <select>
+                  <optgroup label="Fruits">
+                     <option value="1">Mango</option>
+                     <option value="2">Orange</option>
+                     <option value="3">Apple</option>
+                  </optgroup>
+                  <optgroup label="Vegs">
+                     <option value="4">Brinjal</option>
+                     <option value="5">Potato</option>
+                     <option value="6">Tomato</option>
+                  </optgroup>
+               </select>
+            </div>
+            <div class="row">
+               <label>Select with images</label>
+               <select class="icons">
+                  <option value="" disabled selected>Select Technology</option>
+                  <option value="1" data-icon="html5-mini-logo.jpg" class="circle">HTML</option>
+                  <option value="2">JavaScript</option>
+                  <option value="3">CSS</option>
+               </select>
+            </div>
+           
+         </form>       
+      </div>
                 </div>
             </div>
             <div class="card-action">
