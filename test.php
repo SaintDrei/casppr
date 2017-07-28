@@ -8,9 +8,8 @@
 	   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
         
         <!-- SCRIPTS -->
-      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>           
+        <script type="text/javascript" src="includes/jquery-3.2.1.min.js"></script>        
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
-        <script type='text/javascript' src="script.js"></script>
         <script type='text/javascript' src="includes/script.js"></script>
 
     </head>
@@ -65,12 +64,12 @@
         <div class="row">
             <div class="card-panel blue darken-2 z-depth-3">
                 <div class="col s12 m4 l4">
-                    <a class="btn" href="#peex-modal">Open This</a>
+                    <a class="btn modal-trigger" href="#peex-modal">Open This</a>
                     
                 </div>
             </div>
         </div>
-      <div id="peex-modal" class="modal modal-trigger">
+      <div id="peex-modal" class="modal">
         <div class="row"></div><div class="row"></div><div class="row"></div><div class="row"></div>
 
         <div class="container form">
