@@ -15,11 +15,14 @@
                             <div class="input-field col s12 m6">
                                 <select class="icons">
                                   <option value="" disabled selected>Choose your option</option>
-                                  <option value="" data-icon="../content/images/cpt/logo.png" class="left circle">example 1</option>
-                                  <option value="" data-icon="images/office.jpg" class="left circle">example 2</option>
-                                  <option value="" data-icon="images/yuna.jpg" class="left circle">example 3</option>
+                                  <option value="" data-icon="../content/images/coro/logo.jpg" class="left circle">Coro San Benildo</option>
+                                  <option value="" data-icon="../content/images/cpt/logo.png" class="left circle">Cultural Promotions Team</option>
+                                  <option value="" data-icon="../content/images/df/logo.jpg" class="left circle">Dulaang Filipino</option>
+                                  <option value="" data-icon="../content/images/karilyo/logo.jpg" class="left circle">Karilyo</option>
+                                  <option value="" data-icon="../content/images/sbrdc/logo.jpg" class="left circle">Saint Benilde Romançon Dance Company</option>
+                                  <option value="" data-icon="../content/images/spot/logo.jpg" class="left circle">Stage Production Operations Team</option>
                                 </select>
-                                <label>Images in select</label>
+                                <label>Artist Group</label>
                             </div>
                         </div>
                     
