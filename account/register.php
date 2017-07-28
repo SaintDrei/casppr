@@ -14,7 +14,7 @@
                         <div class="row">
                             <div class="input-field col s12 m6 l6 push-l1">
                                 <select class="icons">
-                                  <option value="" disabled selected>Choose your option</option>
+                                  <option value="" disabled selected>Choose your Artist Group</option>
                                   <option value="" data-icon="../content/images/coro/logo.jpg" class="left circle">Coro San Benildo</option>
                                   <option value="" data-icon="../content/images/cpt/logo.png" class="left circle">Cultural Promotions Team</option>
                                   <option value="" data-icon="../content/images/df/logo.jpg" class="left circle">Dulaang Filipino</option>
@@ -30,20 +30,10 @@
                                   <?php echo $_subgroups ?>
                                     
                                 </select>
-                                <label>Artist Group</label>
+                                <label>Sub Group</label>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="input-field col s12 l6 m6 push-l1">
-                                <input id="SID" type="number" class="validate">
-                                <label for="schoolID">School ID</label>
-                            </div>
-                        <div class="input-field col s12 l6 m6 push-l1">
-                                <input id="username" disabled type="text" class="validate">
-                                <label for="username">Username</label>
-                            </div>
-                        </div>
-                        <div class="row">
+                         <div class="row">
                             <div class="input-field col s12 l6 m6 push-l1">
                                 <input id="FN" type="number" class="validate">
                                 <label for="FN">First Name</label>
@@ -53,6 +43,72 @@
                                 <label for="LN">Last Name</label>
                             </div>
                         </div>
+                        <div class="row">
+                            
+                        <div class="input-field col s12 l6 m6 push-l1">
+                                <input id="username" disabled type="text" class="validate">
+                                <label for="username">Username</label>
+                            </div>
+                            <div class="input-field col s12 l6 m6 push-l1">
+                                <input id="password" type="password" class="validate">
+                                <label for="password">Password</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            
+                        <div class="input-field col s12 l6 m6 push-l1">
+                                <input id="email" type="email" class="validate">
+                                <label for="email">E-Mail</label>
+                            </div>
+                            <div class="input-field col s12 l6 m6 push-l1">
+                                <input id="SID" type="number" class="validate">
+                                <label for="SID">School ID</label>
+                            </div>
+                        </div> 
+                        <div class="row">    
+                        <div class="input-field col s12 l6 m6 push-l1">
+                                <input id="mobile" type="number" class="validate">
+                                <label for="mobile">Mobile</label>
+                            </div>
+                            <div class="input-field col s12 l6 m6 push-l1">
+                                <input id="landline" type="number" class="validate">
+                                <label for="landline">Landline</label>
+                            </div>
+                        </div>
+                     <div class="row">    
+                        <div class="input-field col s12 l12 m12 push-l1">
+                                <input id="address" type="text" class="validate">
+                                <label for="address">Address</label>
+                            </div>
+                                                  
+                        </div>
+                     <div class="row">    
+                        <div class="input-field col s12 l6 m6 push-l1">
+                                <input id="zip" type="text" class="validate">
+                                <label for="zip">Zip</label>
+                            </div>
+                         <div class="input-field col s12 m6 l6 push-l1">
+                                <select class="icons">
+                                    <option value="" disabled selected>Select City</option>
+                                    <?php echo $_cities; ?> 
+                             </select>
+                         </div>
+                            
+                        </div>
+                      <div class="row">    
+                        <div class="input-field col s12 l6 m6 push-l1">
+                             <input type="text" class="datepicker" id="birthdate">
+                            <label for="birthdate">Birthday</label>
+                            </div>
+                         <div class="input-field col s12 m6 l6 push-l1">
+                                <select class="icons">
+                                    <option value="" disabled selected>Scholarship</option>
+                                    <?php echo $_cities; ?> 
+                             </select>
+                         </div>
+                            
+                        </div>
+                     
                     
                     </form>
                 </div>
