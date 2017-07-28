@@ -1,6 +1,6 @@
 <?php
-$page_title = "Form Snippet";
-include_once('/includes/header.php');
+    $page_title = "Form Snippet";
+    include_once('/includes/header.php');
 ?>
 
                 <div class="col s12 m12 l6">

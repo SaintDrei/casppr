@@ -4,13 +4,7 @@
 ?>
 
 
-<script>
 
-     $('.modal').modal();    
-     $('.modal-login').leanModal();
-     $('.modal-trigger').leanModal();
-     $('select').material_select();
-</script>
 
 
         <div class="col s12 m7 l8 push-l2">

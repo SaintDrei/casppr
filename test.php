@@ -1,59 +1,76 @@
-<?php
-	include_once('/includes/header.php');
-?>
-
 <html>
-<head>
-    <title>Test Page</title>
-    <link type="text/css" rel="stylesheet" href="materialize/css/custom.css">
-      <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    
-    
-    <!-- SCRIPTS HERE -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="includes/jquery.js"></script>
-    <script type='text/javascript' src="../materialize/js/materialize.min.js"></script>
-    <script type="text/javascript" src="/includes/script.js"></script>
+    <head>
+     <title>The Materialize Example</title>
+	  <meta name="viewport" content="width=device-width, initial-scale=1">      
+        
+        <!-- Stylesheets -->
+	  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
+        
+        <!-- SCRIPTS -->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>           
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
+        <script type='text/javascript' src="script.js"></script>
+        <script type='text/javascript' src="includes/script.js"></script>
+
     </head>
-<body>
-  <div class="container">
-    <div class="col s10 l10">
-        <div class="card-panel blue darken-2">
-            <div class="col s10 l10 m10">
-                <div class="container form">
-                    <form class="col s10" method="post">
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <select class="icons">
-                                    <option value='' disabled selected>Choose your option</option>
-                                    <option value='' data-icon="/content/images/spot/logo.jpg" class="left circle">SPOT</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row">
-                        
-                         <div class="input-field col s12">
-    <select>
-      <option value="" disabled selected>Choose your option</option>
-      <option value="1">Option 1</option>
-      <option value="2">Option 2</option>
-      <option value="3">Option 3</option>
-    </select>
-    <label>Materialize Select</label>
-  </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s10 m10 l10">
-                            <input id="username" type='text' class='validate'>
-                                <label for='username'>User Neym</label>
-                            </div>
-                        </div>
-                    </form>
-                
-                     <a class="btn" href="#peex-modal">Open This</a>
-                                <div id="peex-modal" class="modal modal-login">
+    <body class="container">
+         <div class="row">
+         <form class="col s12">
+            <div class="row">
+               <label>Materialize Select</label>
+               <select>
+                  <option value="" disabled selected>Select Fruit</option>
+                  <option value="1">Mango</option>
+                  <option value="2">Orange</option>
+                  <option value="3">Apple</option>
+               </select>               
+            </div>
+            <div class="row">
+               <label>Materialize Multi Select</label>
+               <select multiple>
+                  <option value="" disabled selected>Select Fruit</option>
+                  <option value="1">Mango</option>
+                  <option value="2">Orange</option>
+                  <option value="3">Apple</option>
+               </select>              
+            </div>
+            <div class="row">
+               <label>Select with Optgroup</label>
+               <select>
+                  <optgroup label="Fruits">
+                     <option value="1">Mango</option>
+                     <option value="2">Orange</option>
+                     <option value="3">Apple</option>
+                  </optgroup>
+                  <optgroup label="Vegs">
+                     <option value="4">Brinjal</option>
+                     <option value="5">Potato</option>
+                     <option value="6">Tomato</option>
+                  </optgroup>
+               </select>
+            </div>
+            <div class="row">
+               <label>Select with images</label>
+               <select class="icons">
+                  <option value="" disabled selected>Select Technology</option>
+                  <option value="1" data-icon="html5-mini-logo.jpg" class="circle">HTML</option>
+                  <option value="2">JavaScript</option>
+                  <option value="3">CSS</option>
+               </select>
+            </div>
+           
+         </form>       
+      </div>
+        <div class="row">
+            <div class="card-panel blue darken-2 z-depth-3">
+                <div class="col s12 m4 l4">
+                    <a class="btn" href="#peex-modal">Open This</a>
+                    
+                </div>
+            </div>
+        </div>
+      <div id="peex-modal" class="modal modal-trigger">
         <div class="row"></div><div class="row"></div><div class="row"></div><div class="row"></div>
 
         <div class="container form">
@@ -75,19 +92,9 @@
                 
             </div>
         </div>
+        
+        
     </div>
-                </div>
-                
-                    
-                </div>
-            
-            </div>
-        </div>
-      </div>
     
     </body>
 </html>
-
-<?php 
-include_once('/includes/footer.php');
-?>
