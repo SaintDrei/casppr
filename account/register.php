@@ -1,6 +1,20 @@
 <?php
 	$page_title = "Registration";
 	include_once('../includes/header.php');
+
+
+    $sql_scholar = "SELECT scholarID, Name, Description, FROM scholarship ORDER BY Name";
+    $result_scholar = $con->query($sql_scholar);
+    $list_scholar = "";
+    
+	while ($row = mysqli_fetch_array($result_scholar))
+	{
+        $scholarID = $row['scholarID'];
+		$name = $row['Name'];
+        $list_scholar .= "<option value='$scholarID'>$name</option>";
+		
+	}
+
 ?>
     <div class="row">
         <div class="col s12 m10 l8 push-l2 push-m1">
@@ -61,17 +75,17 @@
                                 <label for="email">E-Mail</label>
                             </div>
                             <div class="input-field col s12 l6 m6 push-l1">
-                                <input id="SID" type="number" class="validate">
+                                <input id="SID" type="number" class="validate" maxlength="11">
                                 <label for="SID">School ID</label>
                             </div>
                         </div> 
                         <div class="row">    
                         <div class="input-field col s12 l6 m6 push-l1">
-                                <input id="mobile" type="number" class="validate">
+                                <input id="mobile" type="number" class="validate" maxlength="11">
                                 <label for="mobile">Mobile</label>
                             </div>
                             <div class="input-field col s12 l6 m6 push-l1">
-                                <input id="landline" type="number" class="validate">
+                                <input id="landline" type="number" class="validate" maxlength="7">
                                 <label for="landline">Landline</label>
                             </div>
                         </div>
@@ -87,12 +101,10 @@
                                 <input id="zip" type="text" class="validate">
                                 <label for="zip">Zip</label>
                             </div>
-                         <div class="input-field col s12 m6 l6 push-l1">
-                                <select class="icons">
-                                    <option value="" disabled selected>Select City</option>
-                                    <?php echo $_cities; ?> 
-                             </select>
-                         </div>
+                          <div class="input-field col s12 l6 m6 push-l1">
+                                <input id="city" type="text" class="validate">
+                                <label for="city">City</label>
+                            </div>
                             
                         </div>
                       <div class="row">    
@@ -101,9 +113,9 @@
                             <label for="birthdate">Birthday</label>
                             </div>
                          <div class="input-field col s12 m6 l6 push-l1">
-                                <select class="icons">
+                                <select>
                                     <option value="" disabled selected>Scholarship</option>
-                                    <?php echo $_cities; ?> 
+                                    <?php echo $list_scholar; ?> 
                              </select>
                          </div>
                             
