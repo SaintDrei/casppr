@@ -3,7 +3,7 @@
 	include_once('../includes/header.php');
 
 
-    $sql_scholar = "SELECT scholarID, Name, Description, FROM scholarship ORDER BY Name";
+    $sql_scholar = "SELECT scholarID, Name, Description FROM scholarship ORDER BY Name";
     $result_scholar = $con->query($sql_scholar);
     $list_scholar = "";
     
