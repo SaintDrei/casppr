@@ -63,11 +63,11 @@
                         <div class="row">
                             
                         <div class="input-field col s12 l6 m6 push-l1">
-                                <input id="username" disabled type="text" class="validate" tabindex="5">
+                                <input id="username" disabled type="text" class="validate" tabindex="5" autocomplete="off" >
                                 <label for="username">Username</label>
                             </div>
                             <div class="input-field col s12 l6 m6 push-l1">
-                                <input id="password" type="password" class="validate" tabindex="6">
+                                <input id="password" type="password" class="validate" tabindex="6" autocomplete="off">
                                 <label for="password">Password</label>
                             </div>
                         </div>
