@@ -1,7 +1,7 @@
 <?php
 	$page_title = "Registration";
 	include_once('../includes/header.php');
-
+    
 
     $sql_scholar = "SELECT scholarID, Name, Description FROM scholarship ORDER BY Name";
     $result_scholar = $con->query($sql_scholar);
@@ -12,7 +12,6 @@
         $scholarID = $row['scholarID'];
 		$name = $row['Name'];
         $list_scholar .= "<option value='$scholarID'>$name</option>";
-		
 	}
 
 
@@ -23,21 +22,21 @@
         <div class="col s12 m10 l8 push-l2 push-m1">
             <div class="card">
                 <div class="card-image">
-                    <img src="../content/images/spot/logo.jpg" height="300em">
+                    <img id="changing-img" src="../content/images/spot/logo.jpg" height="300em">
                 </div>
                 <div class="row">
                 <div class="card-content">
                     <form class="col s12 m12 l10">
                         <div class="row">
                             <div class="input-field col s12 m6 l6 push-l1">
-                                <select class="icons" tabindex="1">
+                                <select id="artgroup" class="icons" tabindex="1">
                                   <option value="" disabled selected>Choose your Artist Group</option>
-                                  <option value="" data-icon="../content/images/coro/logo.jpg" class="left circle">Coro San Benildo</option>
-                                  <option value="" data-icon="../content/images/cpt/logo.png" class="left circle">Cultural Promotions Team</option>
-                                  <option value="" data-icon="../content/images/df/logo.jpg" class="left circle">Dulaang Filipino</option>
-                                  <option value="" data-icon="../content/images/karilyo/logo.jpg" class="left circle">Karilyo</option>
-                                  <option value="" data-icon="../content/images/sbrdc/logo.jpg" class="left circle">Saint Benilde Romançon Dance Company</option>
-                                  <option value="" data-icon="../content/images/spot/logo.jpg" class="left circle">Stage Production Operations Team</option>
+                                  <option value="coro" data-icon="../content/images/coro/logo.jpg" class="left circle">Coro San Benildo</option>
+                                  <option value="cpt" data-icon="../content/images/cpt/logo.png" class="left circle">Cultural Promotions Team</option>
+                                  <option value="df" data-icon="../content/images/df/logo.jpg" class="left circle">Dulaang Filipino</option>
+                                  <option value="karilyo" data-icon="../content/images/karilyo/logo.jpg" class="left circle">Karilyo</option>
+                                  <option value="sbrdc" data-icon="../content/images/sbrdc/logo.jpg" class="left circle">Saint Benilde Romançon Dance Company</option>
+                                  <option value="spot" data-icon="../content/images/spot/logo.jpg" class="left circle">Stage Production Operations Team</option>
                                 </select>
                                 <label>Artist Group</label>
                             </div>
@@ -52,14 +51,41 @@
                         </div>
                          <div class="row">
                             <div class="input-field col s12 l6 m6 push-l1">
-                                <input id="FN" type="number" class="validate" tabindex="3">
+                                <input id="FN" type="text" class="validate" tabindex="3">
                                 <label for="FN">First Name</label>
                             </div>
                         <div class="input-field col s12 l6 m6 push-l1">
                                 <input id="LN" type="text" class="validate" tabindex="4">
                                 <label for="LN">Last Name</label>
                             </div>
+                        </div> 
+                       
+                         <div class="row">
+                            <div class="input-field col s12 l6 m6 push-l1">
+                                <input id="MN" type="text" class="validate" tabindex="5">
+                                <label for="MN">Middle Name</label>
+                            </div>
+                        <div class="input-field col s12 l6 m6 push-l1">
+                              <select class="icons">
+      <option value="" disabled selected>Choose your gender</option>
+      <option value="" data-icon="images/sample-1.jpg" class="left circle">example 1</option>
+      <option value="" data-icon="images/office.jpg" class="left circle">example 2</option>
+      <option value="" data-icon="images/yuna.jpg" class="left circle">example 3</option>
+    </select>
+    <label>Gender</label>
+                            </div>
                         </div>
+                         <div class="row">
+                            <div class="input-field col s12 l6 m6 push-l1">
+                                <input id="rel" type="text" class="validate" tabindex="5">
+                                <label for="rel">Religion</label>
+                            </div>
+                        <div class="input-field col s12 l6 m6 push-l1">
+                                <input id="NN" type="text" class="validate" tabindex="6">
+                                <label for="NN">Nickname</label>
+                            </div>
+                        </div> 
+                       
                         <div class="row">
                             
                         <div class="input-field col s12 l6 m6 push-l1">
@@ -83,6 +109,13 @@
                             </div>
                         </div> 
                         <div class="row">    
+                        <div class="input-field col s12 l12 m12 push-l1">
+                                <input id="ctaddress" type="text" class="validate" tabindex="11">
+                                <label for="address">City Address</label>
+                            </div>
+                                                  
+                        </div>
+                        <div class="row">    
                         <div class="input-field col s12 l6 m6 push-l1">
                                 <input id="mobile" type="number" class="validate" maxlength="11" tabindex="9">
                                 <label for="mobile">Mobile</label>
@@ -91,14 +124,25 @@
                                 <input id="landline" type="number" class="validate" maxlength="7" tabindex="10">
                                 <label for="landline">Landline</label>
                             </div>
-                        </div>
-                     <div class="row">    
+                        </div> 
+                        <div class="row">    
                         <div class="input-field col s12 l12 m12 push-l1">
-                                <input id="address" type="text" class="validate" tabindex="11">
-                                <label for="address">Address</label>
+                                <input id="provaddress" type="text" class="validate" tabindex="11">
+                                <label for="address">Provincial Address</label>
                             </div>
                                                   
                         </div>
+                        <div class="row">    
+                        <div class="input-field col s12 l6 m6 push-l1">
+                                <input id="mobile" type="number" class="validate" maxlength="11" tabindex="9">
+                                <label for="mobile">Mobile</label>
+                            </div>
+                            <div class="input-field col s12 l6 m6 push-l1">
+                                <input id="provlandline" type="number" class="validate" maxlength="7" tabindex="10">
+                                <label for="landline">Landline</label>
+                            </div>
+                        </div>
+                     
                      <div class="row">    
                         <div class="input-field col s12 l6 m6 push-l1">
                                 <input id="zip" type="text" class="validate" tabindex="12">
@@ -141,7 +185,7 @@
         </div>
 
     </div>
-                
+    
 <?php
 
 	include_once('../includes/footer.php');

@@ -10,7 +10,14 @@ $(document).ready(function(){
     close: 'Ok',
     closeOnSelect: false // Close upon selecting a date,
   });
-    alert('white-flags');
+    
+    $('#artgroup').change(function(){
+        
+    var sel = $('#artgroup').val();
+    var sors = '../content/images/' + sel + '/logo.jpg';    
+	$('#changing-img').attr('src', sors);
+});
+    
     
 });
 
