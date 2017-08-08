@@ -67,10 +67,10 @@
                             </div>
                         <div class="input-field col s12 l6 m6 push-l1">
                               <select class="icons">
-      <option value="" disabled selected>Choose your gender</option>
-      <option value="" data-icon="images/sample-1.jpg" class="left circle">example 1</option>
-      <option value="" data-icon="images/office.jpg" class="left circle">example 2</option>
-      <option value="" data-icon="images/yuna.jpg" class="left circle">example 3</option>
+      <option value="R" disabled selected>Choose your gender</option>
+      <option value="M" data-icon="../content/images/gender/male.jpg" class="left circle">Male</option>
+                                  <option value="F" data-icon="../content/images/gender/female.jpg" class="left circle">Female</option>
+      <option value="H" data-icon="../content/images/gender/heli.jpg" class="left circle">Attack Helicopter</option>
     </select>
     <label>Gender</label>
                             </div>
