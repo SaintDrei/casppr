@@ -1,5 +1,12 @@
 
-   
+   <footer class="blue page-footer">
+ 
+    <div class="footer-copyright">
+      <div class="container">
+        <span>Made By <a class="white-text" style='font-weight: bold;' href="">TEAM QUADRA</a></span>
+      </div>
+    </div>
+  </footer>
     
      <!--Import jQuery before materialize.js-->
         <!--import use echo app path to pertain to home directory because if not, the document will point to current document where footer is included instead of footer's directory-->

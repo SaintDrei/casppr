@@ -112,7 +112,7 @@ if (isset($_REQUEST['groupID'])){
 		$scholarID = mysqli_real_escape_string($con, $_POST['scholarID']);
         $joinDate = mysqli_real_escape_string($con, $_POST['joindate']);
 
-		$sql_add = "INSERT INTO users VALUES ('', $groupID, $subCat, '$firstName', '$lastName', '$middleName', '$gender', '$religion', '$nickname', '$username', '$password', '$email', $schoolID, '$cityAddress', $cmobile, $clandline, '$provincialAddress', $pmobile, $plandline, $zip, $cityID, '$birthDate', $scholarID, '$joinDate', NOW(), 'Pending', NULL, '')";
+		$sql_add = "INSERT INTO users VALUES ('', $groupID, $subCat, '$firstName', '$lastName', '$middleName', '$gender', '$religion', '$nickname', '$username', '$password', '$email', $schoolID, '$cityAddress', $cmobile, $clandline, '$provincialAddress', $pmobile, $plandline, $zip, $cityID, '$birthDate', $scholarID, '$joinDate', NOW(), 'Pending', NULL, '2')";
 		$con->query($sql_add) or die(mysqli_error($con));
 		header('location:../admin/login.php');
 	} else {

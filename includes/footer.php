@@ -1,3 +1,11 @@
+<footer class="blue page-footer">
+ 
+    <div class="footer-copyright">
+      <div class="container">
+        <span>Made By <a class="white-text" style='font-weight: bold;' href="">TEAM QUADRA</a></span>
+      </div>
+    </div>
+  </footer>
 </div>
      
     

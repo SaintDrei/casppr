@@ -31,6 +31,7 @@
     } else {
         $fn = '';
     }
+
 ?>
 <!DOCTYPE html>
 
@@ -43,7 +44,7 @@
     <meta charset="utf-8">
     <meta name="description" content="Official Website of DLS-CSB's Office of Culture and Arts">
     <meta name='keywords' content="arts, theater, dance, choir, de la salle, saint, benilde, la salle, DLS-CSB">
-    <link rel="icon" href="../content/images/OCA/fav.png">
+    <link rel="icon" href="<?php echo app_path ?>/content/images/OCA/fav.png">
      <!-- Stylesheets -->
        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
@@ -61,10 +62,10 @@
  
       <ul class="dropdown-content" id="user_dropdown">
       
-      <li><a class="indigo-text" href="#!">Profile</a></li>
-      <li><a class="indigo-text" href="<?php echo app_path ?>/includes/logout.php">Logout</a></li>
+      <li><a class="blue-text" href="#!">Profile</a></li>
+      <li><a class="blue-text" href="<?php echo app_path ?>/includes/logout.php">Logout</a></li>
     </ul>
-    <nav class="indigo" role="navigation">
+    <nav class="blue" role="navigation">
         
       <div class="nav-wrapper">
           
@@ -88,9 +89,9 @@
     </nav>
 
     <nav>
-      <div class="nav-wrapper indigo darken-2">
+      <div class="nav-wrapper blue darken-2">
         
-        <a style="margin-left: 20px;" class="breadcrumb" href="../dashboard.php">Admin</a>
+        <a style="margin-left: 20px;" class="breadcrumb" href="<?php echo app_path ?>/admin/dashboard.php">Admin</a>
         <a class="breadcrumb" href="#!"><?php echo $page_title; ?></a>
 
         <div style="margin-right: 20px;" id="timestamp" class="right"></div>

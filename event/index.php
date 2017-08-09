@@ -1,6 +1,6 @@
 <?php
 	$page_title = "Create Event";
-	include_once('../includes/header.php');
+	include_once('../includes/header_admin.php');
     
 
     $sql_scholar = "SELECT scholarID, Name, Description FROM scholarship ORDER BY Name";
@@ -49,8 +49,8 @@ if (isset($_POST['add']))
     <div class="row">
         <div class="col s12 m10 l8 push-l2 push-m1">
             <div class="card">
-                <div class="card-image">
-                    <img id="event-img" src="../content/images/spot/logo.jpg" height="300em">
+                <div class="card-image" >
+                    <img id="event-img" src="../content/images/spot/logo.jpg" onerror="this.src='../content/images/OCA/logo.jpg'" height="300em">
              <div class="file-field input-field">
       <div class="btn-floating halfway-fab waves-effect waves-light red center">
         <span><i class="material-icons">image</i></span>
@@ -165,5 +165,5 @@ if (isset($_POST['add']))
     
 <?php
 
-	include_once('../includes/footer.php');
+	include_once('../includes/footclean.php');
 ?>

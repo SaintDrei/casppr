@@ -23,7 +23,7 @@
     <meta charset="utf-8">
     <meta name="description" content="Official Website of DLS-CSB's Office of Culture and Arts">
     <meta name='keywords' content="arts, theater, dance, choir, de la salle, saint, benilde, la salle, DLS-CSB">
-    <link rel="icon" href="<?php echo $fav;?>">
+     <link rel="icon" href="<?php echo app_path ?>/content/images/OCA/fav.png">
      <!-- Stylesheets -->
        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
