@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 09, 2017 at 05:24 PM
+-- Generation Time: Aug 09, 2017 at 09:23 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -27,13 +27,14 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `artistdetails` (
-  `userID` int(11) NOT NULL,
+  `username` varchar(100) NOT NULL,
   `groupID` int(11) DEFAULT NULL,
   `landline` int(11) NOT NULL,
   `address` varchar(50) NOT NULL,
   `onProbation` tinyint(1) DEFAULT '0',
   `clearedMid` tinyint(1) DEFAULT '0',
-  `modifyDate` datetime DEFAULT NULL
+  `modifyDate` datetime DEFAULT NULL,
+  `picture` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -361,7 +362,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`userID`, `groupID`, `subCat`, `firstName`, `lastName`, `middleName`, `gender`, `religion`, `nickname`, `username`, `password`, `email`, `schoolID`, `cityAddress`, `cmobile`, `clandline`, `provincialAddress`, `pmobile`, `plandline`, `zip`, `cityID`, `birthDate`, `scholarID`, `joinDate`, `modifyDate`, `status`, `onProbation`, `userType`) VALUES
-(1, 1, 26, 'Gardo', 'Putik', 'Dela', 'M', 'Muslim', 'Puta', 'Gardo.Putik', 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'pogalats1@gmail.com', 1123123, 'asdf asdf ', 123123, 123123, 'asdf asdf ', 123123, 123123, 123, 20, '0000-00-00 00:00:00', 21, '0000-00-00 00:00:00', '2017-08-09 23:19:00', 'Pending', NULL, 1);
+(1, 1, 26, 'Gardo', 'Putik', 'Dela', 'M', 'Muslim', 'Puta', 'Gardo.Putik', 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'pogalats1@gmail.com', 1123123, 'asdf asdf ', 123123, 123123, 'asdf asdf ', 123123, 123123, 123, 20, '0000-00-00 00:00:00', 21, '0000-00-00 00:00:00', '2017-08-09 23:19:00', 'Active', NULL, 1),
+(2, 3, 12, 'user', 'name', 'gardo', 'M', 'cath', 'cath', 'user.name', 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'pogalats1@gmail.com', 123123, 'asdf', 123, 123, 'asdf', 123, 123, 123, 95, '0000-00-00 00:00:00', 10, '0000-00-00 00:00:00', '2017-08-10 02:47:26', 'Active', NULL, 1),
+(3, 2, 24, 'user', 'one', 'dal', 'F', 'ca', 'ca', 'user.one', 'tae', 'andreimishael.santos@gmail.com', 12312, '3123123', 123, 123, '123', 123, 123, 123, 94, '0000-00-00 00:00:00', 7, '0000-00-00 00:00:00', '2017-08-10 02:52:32', 'Pending', NULL, 1),
+(4, 2, 23, 'user', 'two', 'asdf', 'H', 'asdf', 'asdf', 'user.two', '865ec76b33caab67fe6d09b4f0c8e8187b1c06c3cae4a5f4d71c7935285f33af', 'andreimishael.santos@benilde.edu.ph', 123, '123', 123, 123, '123', 123, 123, 123, 20, '0000-00-00 00:00:00', 10, '0000-00-00 00:00:00', '2017-08-10 03:11:15', 'Pending', NULL, 0),
+(6, 2, 23, 'user', 'three', 'asdf', 'H', 'asdf', 'asdf', 'user.three', 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'andreimishael.santos@benilde.edu.ph', 123, '123', 123, 123, '123', 123, 123, 123, 20, '0000-00-00 00:00:00', 10, '0000-00-00 00:00:00', '2017-08-10 03:11:57', 'Active', NULL, 1),
+(7, 1, 26, 'user', 'four', 'Dela', 'M', 'Muslim', 'Puta', 'user.four', '865ec76b33caab67fe6d09b4f0c8e8187b1c06c3cae4a5f4d71c7935285f33af', 'pogalats1@gmail.com', 1123123, 'asdf asdf ', 123123, 123123, 'asdf asdf ', 123123, 123123, 123, 20, '0000-00-00 00:00:00', 21, '0000-00-00 00:00:00', '2017-08-10 03:18:06', 'Active', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -390,8 +396,8 @@ INSERT INTO `usertype` (`typeID`, `Description`) VALUES
 -- Indexes for table `artistdetails`
 --
 ALTER TABLE `artistdetails`
-  ADD PRIMARY KEY (`userID`),
-  ADD UNIQUE KEY `userID` (`userID`);
+  ADD PRIMARY KEY (`username`),
+  ADD UNIQUE KEY `userID` (`username`);
 
 --
 -- Indexes for table `artistgroups`
@@ -475,7 +481,7 @@ ALTER TABLE `usercat`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `usertype`
 --
