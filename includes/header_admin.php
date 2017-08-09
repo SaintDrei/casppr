@@ -11,7 +11,7 @@
 
     require($_SERVER['DOCUMENT_ROOT'] . '/casppr/config.php');
     require($_SERVER['DOCUMENT_ROOT'] . '/casppr/function.php');
-
+    $logout = $_SERVER['DOCUMENT_ROOT'] . 'casppr/includes/logout.php';
     $userName = "John Doe";
     $userType = "Administrator";
 
@@ -56,14 +56,13 @@
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
-    <p id="uname"><?php echo $fn;?></p>
   <header>
     
  
       <ul class="dropdown-content" id="user_dropdown">
       
       <li><a class="indigo-text" href="#!">Profile</a></li>
-      <li><a class="indigo-text" href="#!">Logout</a></li>
+      <li><a class="indigo-text" href="<?php echo app_path ?>/includes/logout.php">Logout</a></li>
     </ul>
     <nav class="indigo" role="navigation">
         

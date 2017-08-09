@@ -116,7 +116,7 @@ if (isset($_REQUEST['groupID'])){
 		$con->query($sql_add) or die(mysqli_error($con));
 		header('location:../admin/login.php');
 	} else {
-        echo 'shit';
+        
     }
 
 ?>
@@ -126,7 +126,7 @@ if (isset($_REQUEST['groupID'])){
         <div class="col s12 m10 l8 push-l2 push-m1">
             <div class="card">
                 <div class="card-image">
-                    <img id="changing-img" src="../content/images/<?php echo $gid;?>/logo.jpg" height="300em">
+                    <img id="changing-img" src="../content/images/<?php echo $gid;?>/logo.jpg " onerror="this.src='../content/images/OCA/logo.jpg'" height="300em">
                 </div>
                 <div class="row">
                 <div class="card-content">

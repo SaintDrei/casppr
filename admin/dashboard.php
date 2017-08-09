@@ -6,6 +6,7 @@
 ?>
 
 
+<!--
   <header>
       
  
@@ -18,7 +19,7 @@
         
       <div class="nav-wrapper">
           
-<!--        <a data-activates="slide-out" class="button-collapse show-on-" href="#!"><img style="margin-top: 17px; margin-left: 5px;" src="https://res.cloudinary.com/dacg0wegv/image/upload/t_media_lib_thumb/v1463989873/smaller-main-logo_3_bm40iv.gif" /></a>-->
+        <a data-activates="slide-out" class="button-collapse show-on-" href="#!"><img style="margin-top: 17px; margin-left: 5px;" src="https://res.cloudinary.com/dacg0wegv/image/upload/t_media_lib_thumb/v1463989873/smaller-main-logo_3_bm40iv.gif" /></a>
 
           <ul class="left" onclick="visibility:hidden;">
           <li>
@@ -49,6 +50,7 @@
     </nav>
       
   </header>
+-->
 
   <main>
       <div class="row">
