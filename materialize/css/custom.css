@@ -1,5 +1,12 @@
+ body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
 
-
+  main {
+    flex: 1 0 auto;
+  }
 /*!
  * Materialize v0.99.0 (http://materializecss.com)
  * Copyright 2014-2017 Materialize

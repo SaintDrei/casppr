@@ -1,8 +1,20 @@
 $(document).ready(function(){
-    alert('works');
+         Materialize.toast('All good!', 4000);
+    
+    //Materialize inits
+    $(".button-collapse").sideNav({closeOnClick: true});
     $('.modal').modal();    
     $('select').material_select();
-    $('.button-collapse').sideNav();
+    $('.button-collapse').sideNav(
+    {
+        
+         menuWidth: 300, // Default is 240
+      closeOnClick: true
+    }
+    );
+    $('.collapsible').collapsible();
+    
+    
  $('.tooltipped').tooltip({delay: 50});
     $('.collapsible').collapsible();
      $('.datepicker').pickadate({
@@ -54,7 +66,11 @@ $(document).ready(function(){
  $("#username").val(un);
         
 });
+    var logerror = $("#logerror").html();
     
+    if (logerror == "bad"){
+         Materialize.toast('Wrong username or password!', 4000);
+    }
     
     //populate subgroup
     $('#artgroup').change(function(ln){
@@ -62,8 +78,6 @@ $(document).ready(function(){
     });
     
    
-    alert('all-good');  
-    
     
 });
 

@@ -86,7 +86,6 @@ if (isset($_REQUEST['groupID'])){
 
 	if (isset($_POST['add']))
 	{
-        echo $_POST['gender'];
 		$groupID = mysqli_real_escape_string($con, $gid);
         $subCat = mysqli_real_escape_string($con, $_POST['subCat']);
 		$firstName = mysqli_real_escape_string($con, $_POST['firstName']);
@@ -98,7 +97,7 @@ if (isset($_REQUEST['groupID'])){
         $un = $firstName . '.' . $lastName;
         
 		$username = mysqli_real_escape_string($con, $un);
-		$password= hash('sha256', mysqli_real_escape_string($con, $_POST['password']));
+		$password= hash('sha256',mysqli_real_escape_string($con, $_POST['password']));
 		$email = mysqli_real_escape_string($con, $_POST['email']);
 		$schoolID = mysqli_real_escape_string($con, $_POST['schoolID']);
 		$cityAddress = mysqli_real_escape_string($con, $_POST['cityAddress']);
@@ -113,9 +112,9 @@ if (isset($_REQUEST['groupID'])){
 		$scholarID = mysqli_real_escape_string($con, $_POST['scholarID']);
         $joinDate = mysqli_real_escape_string($con, $_POST['joindate']);
 
-		$sql_add = "INSERT INTO users VALUES ('', $groupID, $subCat, '$firstName', '$lastName', '$middleName', '$gender', '$religion', '$nickname', '$username', '$password', '$email', $schoolID, '$cityAddress', $cmobile, $clandline, '$provincialAddress', $pmobile, $plandline, $zip, $cityID, '$birthDate', $scholarID, '$joinDate', NOW(), 'Pending', NULL)";
+		$sql_add = "INSERT INTO users VALUES ('', $groupID, $subCat, '$firstName', '$lastName', '$middleName', '$gender', '$religion', '$nickname', '$username', '$password', '$email', $schoolID, '$cityAddress', $cmobile, $clandline, '$provincialAddress', $pmobile, $plandline, $zip, $cityID, '$birthDate', $scholarID, '$joinDate', NOW(), 'Pending', NULL, '')";
 		$con->query($sql_add) or die(mysqli_error($con));
-		//header('location: index.php');
+		header('location:../admin/login.php');
 	} else {
         echo 'shit';
     }

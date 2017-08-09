@@ -7,97 +7,96 @@
     $disp_port = ($protocol == 'http' && $port == 80 || $protocol == 'https' && $port == 443) ? '' : ":$port";
     $domain    = $_SERVER['SERVER_NAME'];
 
-    define('app_path', "${protocol}://${domain}${disp_port}" . '/myshop/');
+    define('app_path', "${protocol}://${domain}${disp_port}" . '/casppr/');
 
-    require($_SERVER['DOCUMENT_ROOT'] . '/myshop/config.php');
-    require($_SERVER['DOCUMENT_ROOT'] . '/myshop/function.php');
+    require($_SERVER['DOCUMENT_ROOT'] . '/casppr/config.php');
+    require($_SERVER['DOCUMENT_ROOT'] . '/casppr/function.php');
 
     $userName = "John Doe";
     $userType = "Administrator";
 
-    #session_start();
+    session_start();
     if(isset($_SESSION['userid']))
     {
         $userid = $_SESSION['userid'];
-        $sql_user = "SELECT u.firstName, u.lastName, t.UserType FROM Users u INNER JOIN Types t ON u.typeID = t.typeID WHERE u.userID=$userid";
+        $sql_user = "SELECT u.username, u.firstName, u.lastName, u.userType, t.typeID FROM users u INNER JOIN usertype t ON u.userType = t.typeID WHERE u.username='$userid'";
         $result_user = $con->query($sql_user) or die(mysqli_error($con));
         while($row = mysqli_fetch_array($result_user))
         {
             $fn = $row['firstName'];
             $ln = $row['lastName'];
             $username = $fn . ' ' . $ln;
-            $userType = row['userType'];
+        
         }
+    } else {
+        $fn = '';
     }
 ?>
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    
     <title><?php echo $page_title ?></title>
-    <link href="<?php echo app_path ?>css/bootstrap.css" rel="stylesheet" />
-    <link href="<?php echo app_path ?>css/custom.css" rel="stylesheet" />
-    <link href="<?php echo app_path ?>css/font-awesome.min.css" rel="stylesheet" />
-    <link href="<?php echo app_path ?>css/jasny-bootstrap.min.css" rel="stylesheet" />
-    <link href="//cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" rel="stylesheet" />
-    <script type="text/javascript" src='<?php echo app_path ?>js/jquery-3.2.0.min.js'></script>
-    <script type="text/javascript" src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src='<?php echo app_path ?>ckeditor/ckeditor.js'></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="Andrei Mishael D. Santos">
+    <meta charset="utf-8">
+    <meta name="description" content="Official Website of DLS-CSB's Office of Culture and Arts">
+    <meta name='keywords' content="arts, theater, dance, choir, de la salle, saint, benilde, la salle, DLS-CSB">
+    <link rel="icon" href="../content/images/OCA/fav.png">
+     <!-- Stylesheets -->
+       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
+        <link rel="stylesheet" href="<?php echo app_path ?>materialize/css/custom.css">
+       
+        <!-- SCRIPTS -->
+      
+     
+            
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
-<body>
-    <div class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <a id="home" href="<?php echo app_path ?>admin" class="navbar-brand">My Shop</a>
-                <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#navbar-main">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                </button>
-            </div>
-            <div class="navbar-collapse collapse" id="navbar-main" style="height: 1px;">
-                <ul class="nav navbar-nav">
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" id="products" href="#">Products <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="<?php echo app_path ?>admin/products">View Products</a></li>
-                            <li><a href="<?php echo app_path ?>admin/products/add.php">Add a Product</a></li>
-                            <li class="divider"></li>
-                            <li><a href="<?php echo app_path ?>admin/products/categories">View Product Categories</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" id="users" href="#">Users <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="<?php echo app_path ?>admin/users">View Users</a></li>
-                            <li><a href="<?php echo app_path ?>admin/users/add.php">Add a User</a></li>
-                            <li class="divider"></li>
-                            <li><a href="<?php echo app_path ?>admin/users/logs.php">View System Logs</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <ul class="nav navbar-nav pull-right" <?php toggleUser(); ?>>
-                    <li id="user" class="dropdown" visible="true">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <?php echo $userName . ' (' . $userType . ')'; ?><span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="<?php echo app_path ?>admin/profile.php">View Profile</a></li>
-                            <li class="divider"></li>
-                            <li><a href="<?php echo app_path ?>admin/logout.php">Logout</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="clearfix">
-            <div class="page-header">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1><?php echo $page_title; ?></h1>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
+    <p id="uname"><?php echo $fn;?></p>
+  <header>
+    
+ 
+      <ul class="dropdown-content" id="user_dropdown">
+      
+      <li><a class="indigo-text" href="#!">Profile</a></li>
+      <li><a class="indigo-text" href="#!">Logout</a></li>
+    </ul>
+    <nav class="indigo" role="navigation">
+        
+      <div class="nav-wrapper">
+          
+<!--        <a data-activates="slide-out" class="button-collapse show-on-" href="#!"><img style="margin-top: 17px; margin-left: 5px;" src="https://res.cloudinary.com/dacg0wegv/image/upload/t_media_lib_thumb/v1463989873/smaller-main-logo_3_bm40iv.gif" /></a>-->
+
+          <ul class="left" onclick="visibility:hidden;">
+          <li>
+           
+          </li>
+        </ul>
+          
+        <ul class="right hide-on-med-and-down">
+          <li>
+            <a class='right dropdown-button' href='' data-activates='user_dropdown' visibility="<?php if($userid=''){echo 'hidden';};?>"><i class=' material-icons'>account_circle</i></a>
+          </li>
+        </ul>
+ 
+
+        <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+      </div>
+    </nav>
+
+    <nav>
+      <div class="nav-wrapper indigo darken-2">
+        
+        <a style="margin-left: 20px;" class="breadcrumb" href="../dashboard.php">Admin</a>
+        <a class="breadcrumb" href="#!"><?php echo $page_title; ?></a>
+
+        <div style="margin-right: 20px;" id="timestamp" class="right"></div>
+          
+      </div>
+    </nav>
+      
+  </header>
