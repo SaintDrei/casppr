@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 09, 2017 at 10:08 PM
+-- Generation Time: Aug 09, 2017 at 11:16 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -365,7 +365,7 @@ INSERT INTO `users` (`userID`, `groupID`, `subCat`, `firstName`, `lastName`, `mi
 (1, 1, 26, 'Gardo', 'Putik', 'Dela', 'M', 'Muslim', 'Puta', 'Gardo.Putik', 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'pogalats1@gmail.com', 1123123, 'asdf asdf ', 123123, 123123, 'asdf asdf ', 123123, 123123, 123, 20, '0000-00-00 00:00:00', 21, '0000-00-00 00:00:00', '2017-08-09 23:19:00', 'Active', NULL, 1),
 (2, 3, 12, 'user', 'name', 'gardo', 'M', 'cath', 'cath', 'user.name', 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'pogalats1@gmail.com', 123123, 'asdf', 123, 123, 'asdf', 123, 123, 123, 95, '0000-00-00 00:00:00', 10, '0000-00-00 00:00:00', '2017-08-10 02:47:26', 'Active', NULL, 1),
 (3, 2, 24, 'user', 'one', 'dal', 'F', 'ca', 'ca', 'user.one', 'tae', 'andreimishael.santos@gmail.com', 12312, '3123123', 123, 123, '123', 123, 123, 123, 94, '0000-00-00 00:00:00', 7, '0000-00-00 00:00:00', '2017-08-10 02:52:32', 'Pending', NULL, 1),
-(4, 2, 23, 'user', 'two', 'asdf', 'H', 'asdf', 'asdf', 'user.two', '865ec76b33caab67fe6d09b4f0c8e8187b1c06c3cae4a5f4d71c7935285f33af', 'andreimishael.santos@benilde.edu.ph', 123, '123', 123, 123, '123', 123, 123, 123, 20, '0000-00-00 00:00:00', 10, '0000-00-00 00:00:00', '2017-08-10 03:11:15', 'Pending', NULL, 0),
+(4, 2, 23, 'user', 'two', 'asdf', 'H', 'asdf', 'asdf', 'user.two', '865ec76b33caab67fe6d09b4f0c8e8187b1c06c3cae4a5f4d71c7935285f33af', 'andreimishael.santos@benilde.edu.ph', 123, '123', 123, 123, '123', 123, 123, 123, 20, '0000-00-00 00:00:00', 10, '0000-00-00 00:00:00', '2017-08-10 03:11:15', 'Pending', NULL, 2),
 (6, 2, 23, 'user', 'three', 'asdf', 'H', 'asdf', 'asdf', 'user.three', 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'andreimishael.santos@benilde.edu.ph', 123, '123', 123, 123, '123', 123, 123, 123, 20, '0000-00-00 00:00:00', 10, '0000-00-00 00:00:00', '2017-08-10 03:11:57', 'Active', NULL, 1),
 (7, 1, 26, 'user', 'four', 'Dela', 'M', 'Muslim', 'Puta', 'user.four', '865ec76b33caab67fe6d09b4f0c8e8187b1c06c3cae4a5f4d71c7935285f33af', 'pogalats1@gmail.com', 1123123, 'asdf asdf ', 123123, 123123, 'asdf asdf ', 123123, 123123, 123, 20, '0000-00-00 00:00:00', 21, '0000-00-00 00:00:00', '2017-08-10 03:18:06', 'Active', NULL, 1);
 
