@@ -3,23 +3,22 @@
 	include_once('../../includes/header_admin.php');
     
 
-    $sql_user = "SELECT userID, username FROM users ORDER BY username";
+    $sql_user = "SELECT username FROM users ORDER BY username";
     $result_user = $con->query($sql_user);
     $list_user = "";
     
 	while ($row = mysqli_fetch_array($result_user))
 	{
-        $userID = $row['userID'];
-		$username = $row['username'];
-        $list_user .= "<option value='$userID'>$username</option>";
+		$uname = $row['username'];
+        $list_user .= "<option value='$uname'>$uname</option>";
 	}
 	
 	if (isset($_POST['add']))
 	{
-		$userID = mysqli_real_escape_string($con, $_POST['userID']);
+		$username = mysqli_real_escape_string($con, $_POST['username']);
 		$task = mysqli_real_escape_string($con, $_POST['task']);
 		
-		$sql_add = "INSERT INTO task VALUES ('', '$userID', '$task', NOW())";
+		$sql_add = "INSERT INTO task VALUES ('', '$username', '$task', NOW(), '')";
 		$con->query($sql_add) or die(mysqli_error($con));
 		header('location: add.php');
 	}
@@ -38,7 +37,7 @@
         $sql_update = $_SERVER['DOCUMENT_ROOT'] . '/casppr/edit.php';
 //        <input class='fa fa-refresh upate btn btn-success btn-xs' type='submit' value='qty'>
 		$list_view .= "<tr>
-							<td>$username</td>
+							<td>$userID</td>
 							
 							<td>
                             
@@ -71,7 +70,7 @@
 		<div class="form-group">
 			<label class="control-label col-lg-4">User</label>
 			<div class="col-lg-8">
-				<select name="user" class="form-control" required>
+				<select name="username" class="form-control" required>
 					<option value="">Select one...</option>
 					<?php echo $list_user; ?>
 				</select>

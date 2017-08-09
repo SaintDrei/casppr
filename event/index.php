@@ -2,42 +2,20 @@
 	$page_title = "Create Event";
 	include_once('../includes/header_admin.php');
     
-
-    $sql_scholar = "SELECT scholarID, Name, Description FROM scholarship ORDER BY Name";
-    $result_scholar = $con->query($sql_scholar);
-    $list_scholar = "";
+  $sql_group = "SELECT groupID, Name, Description from artistgroups ORDER BY Name";
+    $result_group = $con->query($sql_group);
+    $list_group = "";
     
-	while ($row = mysqli_fetch_array($result_scholar))
-	{
-        $scholarID = $row['scholarID'];
-		$name = $row['Name'];
-        $list_scholar .= "<option value='$scholarID'>$name</option>";
-	}
+    while ($rowgroup = mysqli_fetch_array($result_group)){
+        $groupID = $rowgroup['groupID'];
+        $groupdesc = $rowgroup['Description'];
+        $groupname = $rowgroup['Name'];
+        $list_group .= " <option value='$groupID' data-icon='../content/images/$groupname/logo.jpg' class='left circle'>$groupdesc</option>";
+    }
 
-if (isset($_POST['add']))
+if (isset($_POST['addevent']))
 	{
-		$groupID = mysqli_real_escape_string($con, $_POST['groupID']);
-		$firstName = mysqli_real_escape_string($con, $_POST['firstName']);
-		$lastName = mysqli_real_escape_string($con, $_POST['lastName']);
-		$middleName = mysqli_real_escape_string($con, $_POST['middleName']);
-		$gender = mysqli_real_escape_string($con, $_POST['gender']);
-		$religion = mysqli_real_escape_string($con, $_POST['religion']);
-		$nickname = mysqli_real_escape_string($con, $_POST['nickname']);
-		$username = mysqli_real_escape_string($con, $_POST['username']);
-		$password= hash('sha256', mysqli_real_escape_string($con, $_POST['password']));
-		$email = mysqli_real_escape_string($con, $_POST['email']);
-		$schoolID = mysqli_real_escape_string($con, $_POST['schoolID']);
-		$cityAddress = mysqli_real_escape_string($con, $_POST['cityAddress']);
-		$zip = mysqli_real_escape_string($con, $_POST['zip']);
-		$cityID = mysqli_real_escape_string($con, $_POST['cityID']);
-		$clandline = mysqli_real_escape_string($con, $_POST['clandline']);
-		$cmobile = mysqli_real_escape_string($con, $_POST['cmobile']);
-		$provincialAddress = mysqli_real_escape_string($con, $_POST['provincialAddress']);
-		$clandline = mysqli_real_escape_string($con, $_POST['plandline']);
-		$cmobile = mysqli_real_escape_string($con, $_POST['pmobile']);
-		$birthdate = mysqli_real_escape_string($con, $_POST['birthDate']);
-		$scholarID = mysqli_real_escape_string($con, $_POST['scholarID']);
-
+		
 		$sql_add = "INSERT INTO users VALUES ('', '', '$groupID', '$firstName', '$lastName', '$middleName', '$gender', '$religion', $nickname, '$username', '$password', '$email', '$schoolID', '$cityAddress', '$cmobile', '$clandline', '$provincialAddress', '$pmobile', '$plandline', '$zip', '$cityID', '$birthDate', '$scholarID', NOW(), NULL)";
 		$con->query($sql_add) or die(mysqli_error($con));
 		//header('location: index.php');
@@ -93,13 +71,7 @@ if (isset($_POST['add']))
                              
                        <div class="input-field col s12 m6 l6 push-l1">
                                 <select id="artgroup" name="artgroup" class="icons" tabindex="1">
-                                  <option value="" disabled selected>Artist Group</option>
-                                  <option value="coro" data-icon="../content/images/coro/logo.jpg" class="left circle">Coro San Benildo</option>
-                                  <option value="cpt" data-icon="../content/images/cpt/logo.png" class="left circle">Cultural Promotions Team</option>
-                                  <option value="df" data-icon="../content/images/df/logo.jpg" class="left circle">Dulaang Filipino</option>
-                                  <option value="karilyo" data-icon="../content/images/karilyo/logo.jpg" class="left circle">Karilyo</option>
-                                  <option value="sbrdc" data-icon="../content/images/sbrdc/logo.jpg" class="left circle">Saint Benilde Romançon Dance Company</option>
-                                  <option value="spot" data-icon="../content/images/spot/logo.jpg" class="left circle">Stage Production Operations Team</option>
+                               <?php echo $list_group; ?>
                                 </select>
                             </div>
                         
@@ -141,7 +113,7 @@ if (isset($_POST['add']))
                      <div class="row">
                             <div class="input-field col s12">
                               <button class="btn cyan waves-effect waves-light right" type="submit" name="addevent">Submit
-                                <i class="tiny material-icons right">send</i>
+                                <i class="tiny material-icons right">add</i>
                               </button>
                                 
                             </div>
