@@ -28,16 +28,14 @@
 if (isset($_REQUEST['groupID'])){
     $gid = $_REQUEST['groupID'];
     
-    
-    $sql_sel = "SELECT Name, Description from artistgroups WHERE groupID=$gid";
-    $result_Sel = $con->query($sql_sel);
-    while ($rowsel = mysqli_fetch_array($result_sel)){
-        $selname = $rowsel['Name'];
+    $sql = "SELECT groupID, Description from artistgroups where groupID = $gid";
+    $result_sel = $con->query($sql);
+    $seldesc = "";
+    while($rowsel = mysqli_fetch_array($result_sel)){
         $seldesc = $rowsel['Description'];
     }
-      $list_group = " <option value='$gid' data-icon='../content/images/$gid/logo.jpg' class='left circle'>$seldesc</option>";
     
-    
+    $list_group = "<option value='$gid' data-icon/../content/images/$gid/logo.jpg' class='left circle'>$seldesc</option>";
     $sql_group = "SELECT Name, groupID, Description from artistgroups ORDER BY Name";
     $result_group = $con->query($sql_group);
     while ($rowgroup = mysqli_fetch_array($result_group)){
@@ -45,6 +43,18 @@ if (isset($_REQUEST['groupID'])){
         $groupdesc = $rowgroup['Description'];
         $groupname = $rowgroup['Name'];
         $list_group .= " <option value='$groupID' data-icon='../content/images/$groupID/logo.jpg' class='left circle'>$groupdesc</option>";
+    }
+    
+    if ($gid >0){
+        $sql_sub = "SELECT groupID, subCat, Description from subcategories WHERE groupID = $gid";
+        $result_sub = $con->query($sql_sub);
+        $list_sub = "";
+        
+        while($rowsub = mysqli_fetch_array($result_sub)){
+            $subCat = $rowsub['subCat'];
+            $subDesc = $rowsub['Description'];
+            $list_sub .="<option value='$subCat'>$subDesc</option>";
+        }
     }
     
 //    
@@ -145,8 +155,8 @@ if (isset($_REQUEST['groupID'])){
 		//header('location: index.php');
 	}
 
-
 ?>
+
 <div class="row"></div><div class="row"></div>
     <div class="row">
         <div class="col s12 m10 l8 push-l2 push-m1">
@@ -330,7 +340,8 @@ if (isset($_REQUEST['groupID'])){
         </div>
 
     </div>
-    
+
+</script>
 <?php
 
 	include_once('../includes/footer.php');
