@@ -57,35 +57,6 @@ if (isset($_REQUEST['groupID'])){
         }
     }
     
-//    
-//    $sql_sel = "SELECT Description, Name from artistgroups WHERE groupID=$gid";
-//    $result_sel = mysql_query($sql_sel)  or die(mysqli_error($con));
-//    while ($rowgsel = mysqli_fetch_array($result_sel)){
-//        $gname = $rowgsel['Name'];
-//        $gdesc = $rowgsel['Descriptpion'];
-//    }
-//    
-//    
-//    $list_group = "<option value='$gid'' data-icon='../content/images/$gname/logo.jpg' class='left circle'>$gdesc</option>";
-//    
-//     while ($rowgroup = mysqli_fetch_array($result_group)){
-//        $groupdesc = $rowgroup['Description'];
-//        $groupname = $rowgroup['Name'];
-//        $list_group .= " <option value='$groupname' data-icon='../content/images/$groupname/logo.jpg' class='left circle'>$groupdesc</option>";
-//    } 
-//    
-//    
-//    $sql_subgroup = "SELECT Description, artGroup from subcategories WHERE groupID=$gid ORDER BY Name";
-//    $result_subgroup = $con->query($sql_subgroup) or die(mysqli_error($con));
-//    $list_subgroup = "<option value='$artgrp'>$groupname</option>";
-//    
-//	while ($row1 = mysqli_fetch_array($result_subgroup))
-//	{
-//     
-//        $name = $row1['Description'];
-//        $list_sub .= "<option value='$name'>$name</option>";
-//	}
-   
     
 } else {
     $sql_group = "SELECT groupID, Name, Description from artistgroups ORDER BY Name";
@@ -113,47 +84,41 @@ if (isset($_REQUEST['groupID'])){
         $list_city .= "<option value='$cityID'>$name</option>";
 	}
 
-//	if (isset($_REQUEST['artgrp'])){
-//        $artgrp = $_REQUEST['artgrp'];
-//        $sql_subcat = "SELECT Description FROM subcategories WHERE Description = $artgrp";
-//        $result_subgroup = $con->query($sql_subcat);
-//        $list_subgroup = "";
-//        
-//        while ($rowsub = mysqli_fetch_array($result_subgroup)){
-//            $nem = $rowsub['Description'];
-//           
-//            $list_subgroup .= " <option value="$nem">$nem</option>"
-//        }
-//        
-//    }
 	if (isset($_POST['add']))
 	{
-		$groupID = mysqli_real_escape_string($con, $_POST['groupID']);
+        echo $_POST['gender'];
+		$groupID = mysqli_real_escape_string($con, $gid);
+        $subCat = mysqli_real_escape_string($con, $_POST['subCat']);
 		$firstName = mysqli_real_escape_string($con, $_POST['firstName']);
 		$lastName = mysqli_real_escape_string($con, $_POST['lastName']);
 		$middleName = mysqli_real_escape_string($con, $_POST['middleName']);
-		$gender = mysqli_real_escape_string($con, $_POST['gender']);
+        $gender = mysqli_real_escape_string($con, $_POST['gender']);
 		$religion = mysqli_real_escape_string($con, $_POST['religion']);
 		$nickname = mysqli_real_escape_string($con, $_POST['nickname']);
-		$username = mysqli_real_escape_string($con, $_POST['username']);
+        $un = $firstName . '.' . $lastName;
+        
+		$username = mysqli_real_escape_string($con, $un);
 		$password= hash('sha256', mysqli_real_escape_string($con, $_POST['password']));
 		$email = mysqli_real_escape_string($con, $_POST['email']);
 		$schoolID = mysqli_real_escape_string($con, $_POST['schoolID']);
 		$cityAddress = mysqli_real_escape_string($con, $_POST['cityAddress']);
 		$zip = mysqli_real_escape_string($con, $_POST['zip']);
-		$cityID = mysqli_real_escape_string($con, $_POST['cityID']);
+		$cityID = mysqli_real_escape_string($con, $_POST['ctID']);
 		$clandline = mysqli_real_escape_string($con, $_POST['clandline']);
 		$cmobile = mysqli_real_escape_string($con, $_POST['cmobile']);
 		$provincialAddress = mysqli_real_escape_string($con, $_POST['provincialAddress']);
-		$clandline = mysqli_real_escape_string($con, $_POST['plandline']);
-		$cmobile = mysqli_real_escape_string($con, $_POST['pmobile']);
-		$birthdate = mysqli_real_escape_string($con, $_POST['birthDate']);
+		$plandline = mysqli_real_escape_string($con, $_POST['plandline']);
+		$pmobile = mysqli_real_escape_string($con, $_POST['pmobile']);
+		$birthDate = mysqli_real_escape_string($con, $_POST['birthDate']);
 		$scholarID = mysqli_real_escape_string($con, $_POST['scholarID']);
+        $joinDate = mysqli_real_escape_string($con, $_POST['joindate']);
 
-		$sql_add = "INSERT INTO users VALUES ('', '', '$groupID', '$firstName', '$lastName', '$middleName', '$gender', '$religion', $nickname, '$username', '$password', '$email', '$schoolID', '$cityAddress', '$cmobile', '$clandline', '$provincialAddress', '$pmobile', '$plandline', '$zip', '$cityID', '$birthDate', '$scholarID', NOW(), NULL)";
+		$sql_add = "INSERT INTO users VALUES ('', $groupID, $subCat, '$firstName', '$lastName', '$middleName', '$gender', '$religion', '$nickname', '$username', '$password', '$email', $schoolID, '$cityAddress', $cmobile, $clandline, '$provincialAddress', $pmobile, $plandline, $zip, $cityID, '$birthDate', $scholarID, '$joinDate', NOW(), 'Pending', NULL)";
 		$con->query($sql_add) or die(mysqli_error($con));
 		//header('location: index.php');
-	}
+	} else {
+        echo 'shit';
+    }
 
 ?>
 
@@ -166,25 +131,16 @@ if (isset($_REQUEST['groupID'])){
                 </div>
                 <div class="row">
                 <div class="card-content">
-                    <form class="col s12 m12 l10">
+                    <form method="post" class="col s12 m12 l10" enctype="multipart/form-data">
                         <div class="row">
                             <div class="input-field col s12 m6 l6 push-l1">
                                 <select id="artgroup" name="groupID" class="icons" tabindex="1">
                                     <?php echo $list_group;?>
-<!--
-                                  <option value="$artgrp" disabled selected>$name</option>
-                                  <option href="reg.php?=artgrp='coro'" value="coro" data-icon="../content/images/coro/logo.jpg" class="left circle">Coro San Benildo</option>
-                                  <option value="cpt" data-icon="../content/images/cpt/logo.png" class="left circle">Cultural Promotions Team</option>
-                                  <option value="df" data-icon="../content/images/df/logo.jpg" class="left circle">Dulaang Filipino</option>
-                                  <option value="karilyo" data-icon="../content/images/karilyo/logo.jpg" class="left circle">Karilyo</option>
-                                  <option value="sbrdc" data-icon="../content/images/sbrdc/logo.jpg" class="left circle">Saint Benilde Romançon Dance Company</option>
-                                  <option value="spot" data-icon="../content/images/spot/logo.jpg" class="left circle">Stage Production Operations Team</option>
--->
                                 </select>
                                 <label>Artist Group</label>
                             </div>
                             <div class="input-field col s12 m6 l6 push-l1">
-                                <select class="icons" tabindex="2" name="subgroup" id="subgroup">
+                                <select class="icons" tabindex="2" name="subCat" id="subgroup">
                                   <option value="" disabled selected>Choose your option</option>
                                   <?php echo $list_sub ?>
                                     
@@ -194,22 +150,22 @@ if (isset($_REQUEST['groupID'])){
                         </div>
                          <div class="row">
                             <div class="input-field col s12 l6 m6 push-l1">
-                                <input id="firstName" type="text" class="validate" tabindex="3">
+                                <input id="firstName" name="firstName" type="text" class="validate" tabindex="3">
                                 <label for="firstName">First Name</label>
                             </div>
                         <div class="input-field col s12 l6 m6 push-l1">
-                                <input id="lastName" type="text" class="validate" tabindex="4">
+                                <input id="lastName" name="lastName" type="text" class="validate" tabindex="4">
                                 <label for="lastName">Last Name</label>
                             </div>
                         </div> 
                        
                          <div class="row">
                             <div class="input-field col s12 l6 m6 push-l1">
-                                <input id="middleName" type="text" class="validate" tabindex="5">
+                                <input id="middleName" name="middleName" type="text" class="validate" tabindex="5">
                                 <label for="middleName">Middle Name</label>
                             </div>
                         <div class="input-field col s12 l6 m6 push-l1">
-                              <select class="icons">
+                              <select class="icons" name="gender">
       <option value="R" disabled selected>Choose your gender</option>
       <option value="M" data-icon="../content/images/gender/male.jpg" class="left circle">Male</option>
                                   <option value="F" data-icon="../content/images/gender/female.jpg" class="left circle">Female</option>
@@ -220,11 +176,11 @@ if (isset($_REQUEST['groupID'])){
                         </div>
                          <div class="row">
                             <div class="input-field col s12 l6 m6 push-l1">
-                                <input id="religion" type="text" class="validate" tabindex="5">
+                                <input id="religion" name="religion" type="text" class="validate" tabindex="5">
                                 <label for="religion">Religion</label>
                             </div>
                         <div class="input-field col s12 l6 m6 push-l1">
-                                <input id="nickname" type="text" class="validate" tabindex="6">
+                                <input id="nickname" name="nickname" type="text" class="validate" tabindex="6">
                                 <label for="nickname">Nickname</label>
                             </div>
                         </div> 
@@ -232,7 +188,7 @@ if (isset($_REQUEST['groupID'])){
                         <div class="row">
                             
                         <div class="input-field col s12 l6 m6 push-l1">
-                                <input id="username" type="text" class="validate" tabindex="5" autocomplete="off" disabled>
+                                <input id="username" name="username" type="text" class="validate" tabindex="5" autocomplete="off" disabled>
                                 <label for="username" id="unlabel">Username</label>
                             </div>
                             <div class="input-field col s12 l6 m6 push-l1">
@@ -281,7 +237,7 @@ if (isset($_REQUEST['groupID'])){
                                 <label for="pmobile">Mobile</label>
                             </div>
                             <div class="input-field col s12 l6 m6 push-l1">
-                                <input id="plandline" name="plandline" type="number" class="validate" maxlength="7" tabindex="10">
+                                <input id="plandline" type="number" class="validate" maxlength="7" tabindex="10" name="plandline">
                                 <label for="plandline">Landline</label>
                             </div>
                         </div>
@@ -292,7 +248,7 @@ if (isset($_REQUEST['groupID'])){
                                 <label for="zip">Zip</label>
                             </div>
                           <div class="input-field col s12 m6 l6 push-l1">
-                                <select class="icons" tabindex="2" name="city">
+                                <select class="icons" tabindex="2" name="ctID">
                                   <option value="" disabled selected>Choose your City</option>
                                   <?php echo $list_city ?>
                                     
@@ -307,7 +263,7 @@ if (isset($_REQUEST['groupID'])){
                             <label for="birthDate">Birthday</label>
                             </div>
                          <div class="input-field col s12 m6 l6 push-l1">
-                                <select tabindex="15">
+                                <select tabindex="15" name="scholarID">
                                     <option value="" disabled selected>Scholarship</option>
                                     <?php echo $list_scholar; ?> 
                              </select>
