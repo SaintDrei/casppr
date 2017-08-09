@@ -27,6 +27,7 @@ $(document).ready(function(){
     $('#artgroup').change(function(){
         
     var sel = $('#artgroup').val();
+    window.location.href= "reg.php?groupID=" + sel;
     var sors = '../content/images/' + sel + '/logo.jpg';    
 	$('#changing-img').attr('src', sors);
         
@@ -54,14 +55,11 @@ $(document).ready(function(){
         
 });
     
+    
     //populate subgroup
-    $('#lastName').change(function(ln){
-          fn = $('#firstName').val();
-    ln = $('#lastName').val();
-            var un = fn + "." + ln;
- $("#username").val(un);
-        
-});
+    $('#artgroup').change(function(ln){
+       
+    });
     
    
     alert('all-good');  

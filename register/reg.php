@@ -14,17 +14,84 @@
         $list_scholar .= "<option value='$scholarID'>$name</option>";
 	}
 	
-	$sql_subgroup = "SELECT groupID, Name, Description FROM artistgroups ORDER BY Name";
-    $result_subgroup = $con->query($sql_subgroup);
-    $list_subgroup = "";
+//	$sql_subgroup = "SELECT groupID, Name, Description FROM artistgroups ORDER BY Name";
+//    $result_subgroup = $con->query($sql_subgroup);
+//    $list_subgroup = "";
+//    
+//	while ($row1 = mysqli_fetch_array($result_subgroup))
+//	{
+//        $groupID = $row1['groupID'];
+//		    $name = $row1['Name'];
+//        $list_group .= "<option value='$groupID'>$name</option>";
+//	}
+   
+if (isset($_REQUEST['groupID'])){
+    $gid = $_REQUEST['groupID'];
     
-	while ($row1 = mysqli_fetch_array($result_subgroup))
-	{
-        $groupID = $row1['groupID'];
-		$name = $row1['Name'];
-        $list_group .= "<option value='$groupID'>$name</option>";
-	}
-	
+    
+    $sql_sel = "SELECT Name, Description from artistgroups WHERE groupID=$gid";
+    $result_Sel = $con->query($sql_sel);
+    while ($rowsel = mysqli_fetch_array($result_sel)){
+        $selname = $rowsel['Name'];
+        $seldesc = $rowsel['Description'];
+    }
+      $list_group = " <option value='$gid' data-icon='../content/images/$gid/logo.jpg' class='left circle'>$seldesc</option>";
+    
+    
+    $sql_group = "SELECT Name, groupID, Description from artistgroups ORDER BY Name";
+    $result_group = $con->query($sql_group);
+    while ($rowgroup = mysqli_fetch_array($result_group)){
+        $groupID = $rowgroup['groupID'];
+        $groupdesc = $rowgroup['Description'];
+        $groupname = $rowgroup['Name'];
+        $list_group .= " <option value='$groupID' data-icon='../content/images/$groupID/logo.jpg' class='left circle'>$groupdesc</option>";
+    }
+    
+//    
+//    $sql_sel = "SELECT Description, Name from artistgroups WHERE groupID=$gid";
+//    $result_sel = mysql_query($sql_sel)  or die(mysqli_error($con));
+//    while ($rowgsel = mysqli_fetch_array($result_sel)){
+//        $gname = $rowgsel['Name'];
+//        $gdesc = $rowgsel['Descriptpion'];
+//    }
+//    
+//    
+//    $list_group = "<option value='$gid'' data-icon='../content/images/$gname/logo.jpg' class='left circle'>$gdesc</option>";
+//    
+//     while ($rowgroup = mysqli_fetch_array($result_group)){
+//        $groupdesc = $rowgroup['Description'];
+//        $groupname = $rowgroup['Name'];
+//        $list_group .= " <option value='$groupname' data-icon='../content/images/$groupname/logo.jpg' class='left circle'>$groupdesc</option>";
+//    } 
+//    
+//    
+//    $sql_subgroup = "SELECT Description, artGroup from subcategories WHERE groupID=$gid ORDER BY Name";
+//    $result_subgroup = $con->query($sql_subgroup) or die(mysqli_error($con));
+//    $list_subgroup = "<option value='$artgrp'>$groupname</option>";
+//    
+//	while ($row1 = mysqli_fetch_array($result_subgroup))
+//	{
+//     
+//        $name = $row1['Description'];
+//        $list_sub .= "<option value='$name'>$name</option>";
+//	}
+   
+    
+} else {
+    $sql_group = "SELECT groupID, Name, Description from artistgroups ORDER BY Name";
+    $result_group = $con->query($sql_group);
+    $list_group = "";
+    
+    while ($rowgroup = mysqli_fetch_array($result_group)){
+        $groupID = $rowgroup['groupID'];
+        $groupdesc = $rowgroup['Description'];
+        $groupname = $rowgroup['Name'];
+        $list_group .= " <option value='$groupID' data-icon='../content/images/$groupname/logo.jpg' class='left circle'>$groupdesc</option>";
+    }
+
+}
+  
+
 	$sql_city = "SELECT cityID, name, regionID FROM cities ORDER BY name";
     $result_city = $con->query($sql_city);
     $list_city = "";
@@ -35,7 +102,20 @@
 		$name = $row2['name'];
         $list_city .= "<option value='$cityID'>$name</option>";
 	}
-	
+
+//	if (isset($_REQUEST['artgrp'])){
+//        $artgrp = $_REQUEST['artgrp'];
+//        $sql_subcat = "SELECT Description FROM subcategories WHERE Description = $artgrp";
+//        $result_subgroup = $con->query($sql_subcat);
+//        $list_subgroup = "";
+//        
+//        while ($rowsub = mysqli_fetch_array($result_subgroup)){
+//            $nem = $rowsub['Description'];
+//           
+//            $list_subgroup .= " <option value="$nem">$nem</option>"
+//        }
+//        
+//    }
 	if (isset($_POST['add']))
 	{
 		$groupID = mysqli_real_escape_string($con, $_POST['groupID']);
@@ -72,7 +152,7 @@
         <div class="col s12 m10 l8 push-l2 push-m1">
             <div class="card">
                 <div class="card-image">
-                    <img id="changing-img" src="../content/images/spot/logo.jpg" height="300em">
+                    <img id="changing-img" src="../content/images/<?php echo $gid;?>/logo.jpg" height="300em">
                 </div>
                 <div class="row">
                 <div class="card-content">
@@ -80,20 +160,23 @@
                         <div class="row">
                             <div class="input-field col s12 m6 l6 push-l1">
                                 <select id="artgroup" name="groupID" class="icons" tabindex="1">
-                                  <option value="" disabled selected>Choose your Artist Group</option>
-                                  <option value="coro" data-icon="../content/images/coro/logo.jpg" class="left circle">Coro San Benildo</option>
+                                    <?php echo $list_group;?>
+<!--
+                                  <option value="$artgrp" disabled selected>$name</option>
+                                  <option href="reg.php?=artgrp='coro'" value="coro" data-icon="../content/images/coro/logo.jpg" class="left circle">Coro San Benildo</option>
                                   <option value="cpt" data-icon="../content/images/cpt/logo.png" class="left circle">Cultural Promotions Team</option>
                                   <option value="df" data-icon="../content/images/df/logo.jpg" class="left circle">Dulaang Filipino</option>
                                   <option value="karilyo" data-icon="../content/images/karilyo/logo.jpg" class="left circle">Karilyo</option>
                                   <option value="sbrdc" data-icon="../content/images/sbrdc/logo.jpg" class="left circle">Saint Benilde Romançon Dance Company</option>
                                   <option value="spot" data-icon="../content/images/spot/logo.jpg" class="left circle">Stage Production Operations Team</option>
+-->
                                 </select>
                                 <label>Artist Group</label>
                             </div>
                             <div class="input-field col s12 m6 l6 push-l1">
                                 <select class="icons" tabindex="2" name="subgroup" id="subgroup">
                                   <option value="" disabled selected>Choose your option</option>
-                                  <?php echo $list_group ?>
+                                  <?php echo $list_sub ?>
                                     
                                 </select>
                                 <label>Sub Group</label>
