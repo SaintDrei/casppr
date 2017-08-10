@@ -25,7 +25,7 @@ if (isset($_POST['addevent'])){
 }
 else
 {
-    echo "$enick exists and is a valid dir";
+    
 }
 		//$upload = "../../images/products/"; # location where to upload the image
         $image = $_FILES["eimage"]["name"]; # gets the file from file upload
@@ -42,10 +42,10 @@ else
         $dateEnd= mysqli_real_escape_string($con, $_POST['dend']);
         $timeEnd= mysqli_real_escape_string($con, $_POST['evend']);
         $username = $_SESSION['userid'];
-        $creator= mysqli_real_escape_string($con, $username);
+        $creator= $username;
         
         
-		$sql_add = "INSERT INTO events VALUES ('', '$ename', '$description', '$dateStart', '$timeStart', '$dateEnd', '$timeEnd', '$location', '', '', '$creator', $artGroup, NOW(), NOW(),' $image'";
+		$sql_add = "INSERT INTO events VALUES ('', '$ename', '$description', '$dateStart', '$timeStart', '$dateEnd', '$timeEnd', '$location', '', '', '$creator', '$artGroup', NOW(), NOW(), '$image')";
 		$con->query($sql_add) or die(mysqli_error($con));
         
 		//header('location: index.php');
