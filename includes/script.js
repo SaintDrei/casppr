@@ -44,6 +44,14 @@ $(document).ready(function(){
 	$('#changing-img').attr('src', sors);
         
 });
+    $('#artgroup').change(function(){
+        
+    var sel = $('#artgroup').val();
+    window.location.href= "reg.php?groupID=" + sel;
+    var sors = '../content/images/' + sel + '/logo.jpg';    
+	$('#changing-img').attr('src', sors);
+        
+});
     
     // Event Image changer 
     $('#artgroup').change(function(){
@@ -52,6 +60,9 @@ $(document).ready(function(){
     var sors = '../content/images/' + sel + '/logo.jpg';    
 	$('#changing-img').attr('src', sors);
         
+}); $('#agroup').change(function(){
+        var sel $("#agroup").val();
+        $("#agrp").val(sel);
 });
     //register create Username
        var fn = '';

@@ -1,6 +1,6 @@
 <?php
-	$page_title = "Edit User";
-	include_once('../../includes/header_admin.php');
+	$page_title = "Registration";
+	include_once('../includes/header.php');
     
 
     $sql_scholar = "SELECT scholarID, Name, Description FROM scholarship ORDER BY Name";
@@ -13,8 +13,13 @@
 		$name = $row['Name'];
         $list_scholar .= "<option value='$scholarID'>$name</option>";
 	}
-	
-   
+if (isset($_REQUEST['uname'])){
+    
+}else{
+    	header('location: ./index.php');
+}
+
+
 if (isset($_REQUEST['groupID'])){
     $gid = $_REQUEST['groupID'];
     
@@ -76,7 +81,6 @@ if (isset($_REQUEST['groupID'])){
 
 	if (isset($_POST['add']))
 	{
-		$id = mysqli_real_escape_string($con, $_POST['userID']);
 		$groupID = mysqli_real_escape_string($con, $gid);
         $subCat = mysqli_real_escape_string($con, $_POST['subCat']);
 		$firstName = mysqli_real_escape_string($con, $_POST['firstName']);
@@ -102,26 +106,15 @@ if (isset($_REQUEST['groupID'])){
 		$birthDate = mysqli_real_escape_string($con, $_POST['birthDate']);
 		$scholarID = mysqli_real_escape_string($con, $_POST['scholarID']);
         $joinDate = mysqli_real_escape_string($con, $_POST['joindate']);
-		$status = mysqli_real_escape_string($con, $_POST['status']);
-		$sql_update = "";
-        
-		if ($_POST['pw'] == ""){
-					$sql_update = "UPDATE users SET groupID=$groupID, subCat='$subCat', 
-						firstName='$firstName', lastName='$lastName', middleName='$middleName', gender='$gender', religion='$religion', nickname='$nickname', username='$username', password='$password', email='$email', schoolID='$schoolID', cityAddress='$cityAddress', zip='$zip', 
-						cityID=$cityID, clandline='$clandline', cmobile='$cmobile', provincialAddress='$provincialAddress', plandline='$plandline', pmobile='$pmobile', birthDate='$birthDate', scholarID='$scholarID', joinDate='$joinDate', status='$status', lastModified=NOW()
-						WHERE userID=$id";
-				}else{
-					$sql_update = "UPDATE users SET groupID=$groupID, subCat='$subCat', 
-						firstName='$firstName', lastName='$lastName', middleName='$middleName', gender='$gender', religion='$religion', nickname='$nickname', username='$username', password='$password', email='$email', schoolID='$schoolID', cityAddress='$cityAddress', zip='$zip', 
-						cityID=$cityID, clandline='$clandline', cmobile='$cmobile', provincialAddress='$provincialAddress', plandline='$plandline', pmobile='$pmobile', birthDate='$birthDate', scholarID='$scholarID', joinDate='$joinDate', status='$status', lastModified=NOW()
-						WHERE userID=$id";
-				}
-				
-				$result = $con->query($sql_update) or die(mysqli_error($con));
-				header('location: index.php');
-			}
-?>
 
+		$sql_add = "INSERT INTO users VALUES ('', $groupID, $subCat, '$firstName', '$lastName', '$middleName', '$gender', '$religion', '$nickname', '$username', '$password', '$email', $schoolID, '$cityAddress', $cmobile, $clandline, '$provincialAddress', $pmobile, $plandline, $zip, $cityID, '$birthDate', $scholarID, '$joinDate', NOW(), 'Pending', NULL, '2')";
+		$con->query($sql_add) or die(mysqli_error($con));
+		header('location:../admin/login.php');
+	} else {
+        
+    }
+
+?>
 
 <div class="row"></div><div class="row"></div>
     <div class="row">
@@ -135,14 +128,14 @@ if (isset($_REQUEST['groupID'])){
                     <form method="post" class="col s12 m12 l10" enctype="multipart/form-data">
                         <div class="row">
                             <div class="input-field col s12 m6 l6 push-l1">
-                                <select value="<?php echo $groupID; ?>" id="artgroup" name="groupID" class="icons" tabindex="1">
+                                <select id="artgroup" name="groupID" class="icons" tabindex="1">
                                     <?php echo $list_group;?>
                                 </select>
                                 <label>Artist Group</label>
                             </div>
                             <div class="input-field col s12 m6 l6 push-l1">
-                                <select value="<?php echo $subCat; ?>"class="icons" tabindex="2" name="subCat" id="subgroup">
-                                  <option disabled selected>Choose your option</option>
+                                <select class="icons" tabindex="2" name="subCat" id="subgroup">
+                                  <option value="" disabled selected>Choose your option</option>
                                   <?php echo $list_sub ?>
                                     
                                 </select>
@@ -151,22 +144,22 @@ if (isset($_REQUEST['groupID'])){
                         </div>
                          <div class="row">
                             <div class="input-field col s12 l6 m6 push-l1">
-                                <input  value="<?php echo $firstName; ?>" id="firstName" name="firstName" type="text" class="validate" tabindex="3">
+                                <input id="firstName" name="firstName" type="text" class="validate" tabindex="3">
                                 <label for="firstName">First Name</label>
                             </div>
                         <div class="input-field col s12 l6 m6 push-l1">
-                                <input value="<?php echo $lastName; ?>" id="lastName" name="lastName" type="text" class="validate" tabindex="4">
+                                <input id="lastName" name="lastName" type="text" class="validate" tabindex="4">
                                 <label for="lastName">Last Name</label>
                             </div>
                         </div> 
                        
                          <div class="row">
                             <div class="input-field col s12 l6 m6 push-l1">
-                                <input value="<?php echo $middleName; ?>" id="middleName" name="middleName" type="text" class="validate" tabindex="5">
+                                <input id="middleName" name="middleName" type="text" class="validate" tabindex="5">
                                 <label for="middleName">Middle Name</label>
                             </div>
                         <div class="input-field col s12 l6 m6 push-l1">
-                              <select class="icons" name="gender" value="<?php echo $gender; ?>">
+                              <select class="icons" name="gender">
       <option value="R" disabled selected>Choose your gender</option>
       <option value="M" data-icon="../content/images/gender/male.jpg" class="left circle">Male</option>
                                   <option value="F" data-icon="../content/images/gender/female.jpg" class="left circle">Female</option>
@@ -177,11 +170,11 @@ if (isset($_REQUEST['groupID'])){
                         </div>
                          <div class="row">
                             <div class="input-field col s12 l6 m6 push-l1">
-                                <input value="<?php echo $religion; ?>" id="religion" name="religion" type="text" class="validate" tabindex="5">
+                                <input id="religion" name="religion" type="text" class="validate" tabindex="5">
                                 <label for="religion">Religion</label>
                             </div>
                         <div class="input-field col s12 l6 m6 push-l1">
-                                <input value="<?php echo $nickname; ?>" id="nickname" name="nickname" type="text" class="validate" tabindex="6">
+                                <input id="nickname" name="nickname" type="text" class="validate" tabindex="6">
                                 <label for="nickname">Nickname</label>
                             </div>
                         </div> 
@@ -189,67 +182,67 @@ if (isset($_REQUEST['groupID'])){
                         <div class="row">
                             
                         <div class="input-field col s12 l6 m6 push-l1">
-                                <input value="<?php echo $username; ?>" id="username" name="username" type="text" class="validate" tabindex="5" autocomplete="off" disabled>
+                                <input id="username" name="username" type="text" class="validate" tabindex="5" autocomplete="off" disabled>
                                 <label for="username" id="unlabel">Username</label>
                             </div>
                             <div class="input-field col s12 l6 m6 push-l1">
-                                <input value="<?php echo $password; ?>" id="password" name="password" type="password" class="validate" tabindex="6" autocomplete="off">
+                                <input id="password" name="password" type="password" class="validate" tabindex="6" autocomplete="off">
                                 <label for="password">Password</label>
                             </div>
                         </div>
                         <div class="row">
                             
                         <div class="input-field col s12 l6 m6 push-l1">
-                                <input value="<?php echo $email; ?>" id="email" name="email" type="email" class="validate" tabindex="7">
+                                <input id="email" name="email" type="email" class="validate" tabindex="7">
                                 <label for="email">E-Mail</label>
                             </div>
                             <div class="input-field col s12 l6 m6 push-l1">
-                                <input value="<?php echo $schoolID; ?>" id="schoolID" name="schoolID" type="number" class="validate" maxlength="11"  tabindex="8">
+                                <input id="schoolID" name="schoolID" type="number" class="validate" maxlength="11"  tabindex="8">
                                 <label for="schoolID">School ID</label>
                             </div>
                         </div> 
                         <div class="row">    
                         <div class="input-field col s12 l12 m12 push-l1">
-                                <input value="<?php echo $cityAddress; ?>" id="cityAddress" name="cityAddress" type="text" class="validate" tabindex="11">
+                                <input id="cityAddress" name="cityAddress" type="text" class="validate" tabindex="11">
                                 <label for="cityAddress">City Address</label>
                             </div>
                                                   
                         </div>
                         <div class="row">    
                         <div class="input-field col s12 l6 m6 push-l1">
-                                <input value="<?php echo $cmobile; ?>" id="cmobile" type="number" name="cmobile" class="validate" maxlength="11" tabindex="9">
+                                <input id="cmobile" type="number" name="cmobile" class="validate" maxlength="11" tabindex="9">
                                 <label for="cmobile">Mobile</label>
                             </div>
                             <div class="input-field col s12 l6 m6 push-l1">
-                                <input value="<?php echo $clandline; ?>" id="clandline" type="number" name="clandline" class="validate" maxlength="7" tabindex="10">
+                                <input id="clandline" type="number" name="clandline" class="validate" maxlength="7" tabindex="10">
                                 <label for="clandline">Landline</label>
                             </div>
                         </div> 
                         <div class="row">    
                         <div class="input-field col s12 l12 m12 push-l1">
-                                <input value="<?php echo $provincialAddress; ?>" id="provincialAddress" name="provincialAddress" type="text" class="validate" tabindex="11">
+                                <input id="provincialAddress" name="provincialAddress" type="text" class="validate" tabindex="11">
                                 <label for="provincialAddress">Provincial Address</label>
                             </div>
                                                   
                         </div>
                         <div class="row">    
                         <div class="input-field col s12 l6 m6 push-l1">
-                                <input value="<?php echo $pmobile; ?>" id="pmobile" name="pmobile" type="number" class="validate" maxlength="11" tabindex="9">
+                                <input id="pmobile" name="pmobile" type="number" class="validate" maxlength="11" tabindex="9">
                                 <label for="pmobile">Mobile</label>
                             </div>
                             <div class="input-field col s12 l6 m6 push-l1">
-                                <input value="<?php echo $plandline; ?>" id="plandline" type="number" class="validate" maxlength="7" tabindex="10" name="plandline">
+                                <input id="plandline" type="number" class="validate" maxlength="7" tabindex="10" name="plandline">
                                 <label for="plandline">Landline</label>
                             </div>
                         </div>
                      
                      <div class="row">    
                         <div class="input-field col s12 l6 m6 push-l1">
-                                <input value="<?php echo $zip; ?>"id="zip" type="text" class="validate" tabindex="12" name="zip">
+                                <input id="zip" type="text" class="validate" tabindex="12" name="zip">
                                 <label for="zip">Zip</label>
                             </div>
                           <div class="input-field col s12 m6 l6 push-l1">
-                                <select value="<?php echo $cityID; ?>" class="icons" tabindex="2" name="ctID">
+                                <select class="icons" tabindex="2" name="ctID">
                                   <option value="" disabled selected>Choose your City</option>
                                   <?php echo $list_city ?>
                                     
@@ -260,11 +253,11 @@ if (isset($_REQUEST['groupID'])){
                         </div>
                       <div class="row">    
                         <div class="input-field col s12 l6 m6 push-l1">
-                             <input value="<?php echo $birthDate; ?>" type="text" class="datepicker" id="birthDate" name="birthDate" tabindex="14">
+                             <input type="text" class="datepicker" id="birthDate" name="birthDate" tabindex="14">
                             <label for="birthDate">Birthday</label>
                             </div>
                          <div class="input-field col s12 m6 l6 push-l1">
-                                <select value="<?php echo $scholarID; ?>" tabindex="15" name="scholarID">
+                                <select tabindex="15" name="scholarID">
                                     <option value="" disabled selected>Scholarship</option>
                                     <?php echo $list_scholar; ?> 
                              </select>
@@ -273,7 +266,7 @@ if (isset($_REQUEST['groupID'])){
                         </div> 
                         <div class="row">    
                         <div class="input-field col s12 l6 m6 push-l1">
-                             <input value="<?php echo $joinDate; ?>" type="text" class="datepicker" id="joindate" name="joindate" tabindex="14">
+                             <input type="text" class="datepicker" id="joindate" name="joindate" tabindex="14">
                             <label for="joindate">Join Date</label>
                             </div>
                         

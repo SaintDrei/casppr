@@ -23,6 +23,7 @@
 						</tr>";
 	}
 ?>
+<div class="container">
  <div class="row">
         <div class="col s12 m10 l8 push-l2 push-m1">
              <table class="highlight">
@@ -47,6 +48,7 @@
       <i class="large material-icons">print</i>
     </a>
   </div>
+</div>
 <?php
 	include_once('../../includes/footclean.php');
 ?>
