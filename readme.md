@@ -24,7 +24,7 @@ For future implementations:
 
 ## Contributors
 
-This project is solely developed by <a href="http://andreimishaelsantos.me/>Andrei Mishael Santos</a>
+This project is solely developed by [Andrei Mishael Santos](http://andreimishaelsantos.me)
 
 ## License
 
